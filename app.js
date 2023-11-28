@@ -1,8 +1,13 @@
 const express = require('express');
 const app = express();
 const cors = require('cors');
+const registerRoutes = require('./routes/register');
+const loginRoutes = require('./routes/login');
 
 app.use(cors());
+app.use(express.json()); // for parsing application/json
+app.use(registerRoutes);
+app.use(loginRoutes);
 
 app.get('/', (req, res) => {
   res.status(200).send('Hello World!');
